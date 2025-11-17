@@ -81,7 +81,7 @@
 
         tbody.appendChild(tr);
 
-        const montant = parseFloat(cols[1]);
+        const montant = parseInt(cols[1]);
         if (!isNaN(montant)) total += montant;
       });
 
