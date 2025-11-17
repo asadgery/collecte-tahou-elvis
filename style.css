@@ -16,10 +16,53 @@ header h1 {
 }
 
 header p {
-  margin: 5px 0;
+  margin: 5px 0 15px 0;
   font-size: 1rem;
 }
 
+/* Indicateurs stylisés */
+.indicators {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.indicator {
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  min-width: 150px;
+}
+
+.indicator span {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.indicator strong {
+  display: block;
+  font-size: 1.3rem;
+  color: #2E8B57;
+  margin-top: 5px;
+}
+
+.indicator.total-recu strong {
+  color: #1E90FF;
+}
+
+.indicator.reste strong {
+  color: #FF4500;
+}
+
+.indicator.date-limite strong {
+  color: #DAA520;
+}
+
+/* Table */
 .table-container {
   overflow-x: auto;
 }
@@ -44,11 +87,6 @@ th {
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
-}
-
-tfoot th {
-  background-color: #f7f7f7;
-  text-align: center;
 }
 
 footer {
