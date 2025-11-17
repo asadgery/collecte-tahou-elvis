@@ -14,7 +14,7 @@
     <div class="indicators">
       <div class="indicator objectif">
         <span>Objectif</span>
-        <strong>400 000 FCFA</strong>
+        <strong id="objectif">400 000 FCFA</strong>
       </div>
       <div class="indicator total-recu">
         <span>Total reçu</span>
@@ -28,6 +28,10 @@
         <span>Date limite</span>
         <strong>21/11/2025 23:59</strong>
       </div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
     </div>
   </header>
 
@@ -54,6 +58,7 @@
 
   <script>
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCWf3Bt4Fec1mMurCINfvwa3QaysB_JDsNafQ2sNgzzkZCDBnzoVKrTqXD-YyjckQ60c4zvII8gxUm/pub?output=csv';
+    const objectif = 400000;
 
     async function fetchData() {
       const response = await fetch(csvUrl);
@@ -80,7 +85,20 @@
       });
 
       document.getElementById('total').textContent = total.toLocaleString() + ' FCFA';
-      document.getElementById('reste').textContent = (400000 - total).toLocaleString() + ' FCFA';
+      const reste = objectif - total;
+      document.getElementById('reste').textContent = reste.toLocaleString() + ' FCFA';
+
+      // Mettre à jour la barre de progression
+      const pourcentage = Math.min((total / objectif) * 100, 100);
+      const bar = document.getElementById('progress-bar');
+      bar.style.width = pourcentage + '%';
+      if (pourcentage < 50) {
+        bar.style.backgroundColor = '#FF4500';
+      } else if (pourcentage < 100) {
+        bar.style.backgroundColor = '#1E90FF';
+      } else {
+        bar.style.backgroundColor = '#32CD32';
+      }
     }
 
     fetchData();
