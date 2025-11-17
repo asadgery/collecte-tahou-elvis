@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Suivi des cotisations – TAHOU Elvis</title>
+  <title>Suivi des cotisations pour TAHOU Elvis</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Suivi des cotisations – TAHOU Elvis</h1>
+    <h1>Suivi des cotisations pour TAHOU Elvis</h1>
     <p>Objectif : 400 000 FCFA | Date limite : 21/11/2025 23:59</p>
-    <p>Merci de soutenir notre ami. Chaque contribution compte !</p>
+    <p>Votre geste, quel qu'il soit, sera précieux. Chaque geste compte !</p>
   </header>
 
   <section class="table-container">
-    <table>
+    <table id="contributions">
       <thead>
         <tr>
           <th>Nom</th>
@@ -25,41 +25,20 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Exemples de contributions -->
-        <tr>
-          <td>Koffi Alain</td>
-          <td>5000</td>
-          <td>Wave</td>
-          <td>17/11/2025</td>
-          <td>✔️</td>
-        </tr>
-        <tr>
-          <td>Yao Serge</td>
-          <td>—</td>
-          <td>—</td>
-          <td>—</td>
-          <td>En attente</td>
-        </tr>
-        <tr>
-          <td>Kouadio Marie</td>
-          <td>3000</td>
-          <td>MoMo</td>
-          <td>18/11/2025</td>
-          <td>Contribution libre</td>
-        </tr>
+        <!-- Les lignes seront générées automatiquement -->
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="1">Total reçu</th>
-          <th colspan="4" id="total">8000</th>
+          <th>Total reçu</th>
+          <th id="total" colspan="4">0</th>
         </tr>
         <tr>
-          <th colspan="1">Objectif</th>
+          <th>Objectif</th>
           <th colspan="4">400000</th>
         </tr>
         <tr>
-          <th colspan="1">Reste à collecter</th>
-          <th colspan="4" id="reste">392000</th>
+          <th>Reste à collecter</th>
+          <th id="reste" colspan="4">400000</th>
         </tr>
       </tfoot>
     </table>
@@ -69,15 +48,38 @@
     <p>🙏 Merci pour votre solidarité et votre soutien !</p>
   </footer>
 
-  <!-- Optionnel : script pour calculer total automatiquement -->
   <script>
-    let total = 0;
-    document.querySelectorAll('tbody tr').forEach(row => {
-      let val = row.cells[1].innerText;
-      if(!isNaN(parseFloat(val))) total += parseFloat(val);
-    });
-    document.getElementById('total').innerText = total;
-    document.getElementById('reste').innerText = 400000 - total;
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCWf3Bt4Fec1mMurCINfvwa3QaysB_JDsNafQ2sNgzzkZCDBnzoVKrTqXD-YyjckQ60c4zvII8gxUm/pub?output=csv'; // Remplacez par le lien CSV publié
+
+    async function fetchData() {
+      const response = await fetch(csvUrl);
+      const data = await response.text();
+      const rows = data.split('\n').slice(1); // ignore header
+      const tbody = document.querySelector('#contributions tbody');
+      let total = 0;
+
+      rows.forEach(row => {
+        if (!row.trim()) return;
+        const cols = row.split(',');
+        const tr = document.createElement('tr');
+
+        cols.forEach((col, idx) => {
+          const td = document.createElement('td');
+          td.textContent = col;
+          tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+
+        const montant = parseFloat(cols[1]);
+        if (!isNaN(montant)) total += montant;
+      });
+
+      document.getElementById('total').textContent = total;
+      document.getElementById('reste').textContent = 400000 - total;
+    }
+
+    fetchData();
   </script>
 </body>
 </html>
