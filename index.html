@@ -9,8 +9,26 @@
 <body>
   <header>
     <h1>Suivi des cotisations pour TAHOU Elvis</h1>
-    <p>Objectif : 400 000 FCFA | Date limite : 21/11/2025 23:59</p>
     <p>Votre geste, quel qu'il soit, sera précieux. Chaque geste compte !</p>
+
+    <div class="indicators">
+      <div class="indicator objectif">
+        <span>Objectif</span>
+        <strong>400 000 FCFA</strong>
+      </div>
+      <div class="indicator total-recu">
+        <span>Total reçu</span>
+        <strong id="total">0 FCFA</strong>
+      </div>
+      <div class="indicator reste">
+        <span>Reste à collecter</span>
+        <strong id="reste">400 000 FCFA</strong>
+      </div>
+      <div class="indicator date-limite">
+        <span>Date limite</span>
+        <strong>21/11/2025 23:59</strong>
+      </div>
+    </div>
   </header>
 
   <section class="table-container">
@@ -27,20 +45,6 @@
       <tbody>
         <!-- Les lignes seront générées automatiquement -->
       </tbody>
-      <tfoot>
-        <tr>
-          <th>Total reçu</th>
-          <th id="total" colspan="4">0</th>
-        </tr>
-        <tr>
-          <th>Objectif</th>
-          <th colspan="4">400000</th>
-        </tr>
-        <tr>
-          <th>Reste à collecter</th>
-          <th id="reste" colspan="4">400000</th>
-        </tr>
-      </tfoot>
     </table>
   </section>
 
@@ -49,7 +53,7 @@
   </footer>
 
   <script>
-    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCWf3Bt4Fec1mMurCINfvwa3QaysB_JDsNafQ2sNgzzkZCDBnzoVKrTqXD-YyjckQ60c4zvII8gxUm/pub?output=csv'; // Remplacez par le lien CSV publié
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCWf3Bt4Fec1mMurCINfvwa3QaysB_JDsNafQ2sNgzzkZCDBnzoVKrTqXD-YyjckQ60c4zvII8gxUm/pub?output=csv';
 
     async function fetchData() {
       const response = await fetch(csvUrl);
@@ -63,7 +67,7 @@
         const cols = row.split(',');
         const tr = document.createElement('tr');
 
-        cols.forEach((col, idx) => {
+        cols.forEach(col => {
           const td = document.createElement('td');
           td.textContent = col;
           tr.appendChild(td);
@@ -75,8 +79,8 @@
         if (!isNaN(montant)) total += montant;
       });
 
-      document.getElementById('total').textContent = total;
-      document.getElementById('reste').textContent = 400000 - total;
+      document.getElementById('total').textContent = total.toLocaleString() + ' FCFA';
+      document.getElementById('reste').textContent = (400000 - total).toLocaleString() + ' FCFA';
     }
 
     fetchData();
