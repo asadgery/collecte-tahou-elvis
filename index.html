@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suivi des cotisations – TAHOU Elvis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Suivi des cotisations – TAHOU Elvis</h1>
+    <p>Objectif : 400 000 FCFA | Date limite : 21/11/2025 23:59</p>
+    <p>Merci de soutenir notre ami. Chaque contribution compte !</p>
+  </header>
+
+  <section class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Montant versé (FCFA)</th>
+          <th>Mode de paiement</th>
+          <th>Date</th>
+          <th>Observation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Exemples de contributions -->
+        <tr>
+          <td>Koffi Alain</td>
+          <td>5000</td>
+          <td>Wave</td>
+          <td>17/11/2025</td>
+          <td>✔️</td>
+        </tr>
+        <tr>
+          <td>Yao Serge</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>En attente</td>
+        </tr>
+        <tr>
+          <td>Kouadio Marie</td>
+          <td>3000</td>
+          <td>MoMo</td>
+          <td>18/11/2025</td>
+          <td>Contribution libre</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="1">Total reçu</th>
+          <th colspan="4" id="total">8000</th>
+        </tr>
+        <tr>
+          <th colspan="1">Objectif</th>
+          <th colspan="4">400000</th>
+        </tr>
+        <tr>
+          <th colspan="1">Reste à collecter</th>
+          <th colspan="4" id="reste">392000</th>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <footer>
+    <p>🙏 Merci pour votre solidarité et votre soutien !</p>
+  </footer>
+
+  <!-- Optionnel : script pour calculer total automatiquement -->
+  <script>
+    let total = 0;
+    document.querySelectorAll('tbody tr').forEach(row => {
+      let val = row.cells[1].innerText;
+      if(!isNaN(parseFloat(val))) total += parseFloat(val);
+    });
+    document.getElementById('total').innerText = total;
+    document.getElementById('reste').innerText = 400000 - total;
+  </script>
+</body>
+</html>
