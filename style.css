@@ -26,7 +26,7 @@ header p {
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .indicator {
@@ -35,6 +35,11 @@ header p {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   min-width: 150px;
+  transition: transform 0.2s;
+}
+
+.indicator:hover {
+  transform: translateY(-3px);
 }
 
 .indicator span {
@@ -60,6 +65,24 @@ header p {
 
 .indicator.date-limite strong {
   color: #DAA520;
+}
+
+/* Barre de progression */
+.progress-container {
+  background-color: #ddd;
+  border-radius: 20px;
+  height: 20px;
+  width: 80%;
+  margin: 0 auto 25px auto;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background-color: #FF4500;
+  border-radius: 20px;
+  transition: width 1s ease, background-color 0.5s ease;
 }
 
 /* Table */
