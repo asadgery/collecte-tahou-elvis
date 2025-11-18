@@ -67,6 +67,28 @@ header p {
   color: #DAA520;
 }
 
+/* qrcodes stylisés */
+.qrcodes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.qrcode {
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  min-width: 150px;
+  transition: transform 0.2s;
+}
+
+.indicator:hover {
+  transform: translateY(-3px);
+}
+
 /* Barre de progression */
 .progress-container {
   background-color: #ddd;
