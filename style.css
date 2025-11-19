@@ -85,10 +85,15 @@ header p {
   transition: transform 0.2s;
 }
 
-.indicator:hover {
+.qrcode:hover {
   transform: translateY(-3px);
 }
 
+.qrcode span {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+}
 /* Barre de progression */
 .progress-container {
   background-color: #ddd;
