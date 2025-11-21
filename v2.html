@@ -408,11 +408,12 @@
         tdNum.textContent = rowNumber++;
         tr.appendChild(tdNum);
 
-        cols.forEach(col => {
+        // Afficher seulement les 4 premières colonnes (Nom, Montant, Mode, Date) sans Observation
+        for (let i = 0; i < 4; i++) {
           const td = document.createElement('td');
-          td.textContent = col;
+          td.textContent = cols[i] || '';
           tr.appendChild(td);
-        });
+        }
 
         tbody.appendChild(tr);
 
