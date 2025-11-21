@@ -383,7 +383,41 @@
 
   <footer>
     <p>🙏 Merci pour votre solidarité et votre soutien !</p>
+    <button id="celebration-btn" style="
+      margin-top: 20px;
+      padding: 20px 40px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #333;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      animation: pulse-button 2s ease-in-out infinite;
+    " onclick="window.location.href='celebration.html'">
+      🎉 Voir la célébration ! 🎉
+    </button>
   </footer>
+
+  <style>
+    @keyframes pulse-button {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+      }
+    }
+    
+    #celebration-btn:hover {
+      transform: scale(1.1) rotate(-3deg);
+      box-shadow: 0 15px 50px rgba(255, 215, 0, 0.7);
+    }
+  </style>
 
   <script>
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCWf3Bt4Fec1mMurCINfvwa3QaysB_JDsNafQ2sNgzzkZCDBnzoVKrTqXD-YyjckQ60c4zvII8gxUm/pub?output=csv';
