@@ -265,13 +265,13 @@
           if (!isNaN(montant)) total += montant;
         });
 
-        const pourcentage = Math.min(Math.round((total / objectif) * 100), 100);
+        const pourcentage = Math.round((total / objectif) * 100);
         const reste = Math.max(objectif - total, 0);
         
         document.getElementById('percentage').textContent = pourcentage + '%';
         if (pourcentage >= 100) document.getElementById('message').textContent = "🎊 NOUS N'AVONS PAS SU QUE C'ÉTAIT IMPOSSIBLE, ALORS NOUS L'AVONS FAIT ! 🎊";
         document.getElementById('submessage').textContent = 
-          pourcentage >= 100 ? '🎊 OBJECTIF MINIMUM ATTEINT ! BRAVO ! 🎊' : 
+          pourcentage >= 100 ? '🎊 OBJECTIF MINIMUM DEPASSE ! BRAVO ! 🎊' : 
           `Plus que ${100 - pourcentage}% pour la victoire !`;
 
       } catch (error) {
