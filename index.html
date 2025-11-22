@@ -269,6 +269,7 @@
         const reste = Math.max(objectif - total, 0);
         
         document.getElementById('percentage').textContent = pourcentage + '%';
+        if (pourcentage >= 100) document.getElementById('message').textContent = "🎊 ON NE SAVAIT PAS QUE C'ÉTAIT IMPOSSIBLE, ALORS ON L'A FAIT ! 🎊";
         document.getElementById('submessage').textContent = 
           pourcentage >= 100 ? '🎊 OBJECTIF MINIMUM ATTEINT ! BRAVO ! 🎊' : 
           `Plus que ${100 - pourcentage}% pour la victoire !`;
