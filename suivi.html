@@ -473,7 +473,7 @@
       const pourcentage = Math.round((total / objectif) * 100);
       const bar = document.getElementById('progress-bar');
       bar.style.width = pourcentage + '%';
-      bar.textContent = Math.round(pourcentage) + '%';
+      bar.textContent = pourcentage + '%';
       
       if (pourcentage < 50) {
         bar.style.background = 'linear-gradient(90deg, #FF4500, #FF6347)';
