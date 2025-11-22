@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Objectif Presque Atteint !</title>
+  <title>Accueil</title>
   <meta property="og:description" content="Suivi des collectes pour Tahou Elvis. Liste des contributions reçues.">
   <meta property="og:image" content="https://raw.githubusercontent.com/asadgery/collecte-tahou-elvis/main/qr_code_wave_1200.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -210,7 +210,7 @@
   <div class="container">
     <div class="trophy">🏆</div>
     <h1 class="percentage" id="percentage">...</h1>
-    <p class="message">🎉 OBJECTIF MINIMUM PRESQUE ATTEINT ! 🎉</p>
+    <p class="message" id="message">🎉 OBJECTIF MINIMUM PRESQUE ATTEINT ! 🎉</p>
     <p class="submessage" id="submessage">Chargement...</p>
     <div style="margin-top: 30px; font-size: 3rem;">
       ⭐ 💫 ✨ 🌟 ⚡
@@ -269,7 +269,7 @@
         const reste = Math.max(objectif - total, 0);
         
         document.getElementById('percentage').textContent = pourcentage + '%';
-        if (pourcentage >= 100) document.getElementById('message').textContent = "🎊 ON NE SAVAIT PAS QUE C'ÉTAIT IMPOSSIBLE, ALORS ON L'A FAIT ! 🎊";
+        if (pourcentage >= 100) document.getElementById('message').textContent = "🎊 NOUS N'AVONS PAS SU QUE C'ÉTAIT IMPOSSIBLE, ALORS NOUS L'AVONS FAIT ! 🎊";
         document.getElementById('submessage').textContent = 
           pourcentage >= 100 ? '🎊 OBJECTIF MINIMUM ATTEINT ! BRAVO ! 🎊' : 
           `Plus que ${100 - pourcentage}% pour la victoire !`;
