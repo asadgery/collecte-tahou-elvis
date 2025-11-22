@@ -396,7 +396,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
       animation: pulse-button 2s ease-in-out infinite;
-    " onclick="window.location.href='index.html'">
+    " onclick="window.location.href='celebration.html'">
       🎉 Voir la célébration ! 🎉
     </button>
   </footer>
@@ -439,6 +439,10 @@
       const data = await response.text();
       const rows = data.split('\n').slice(1);
       const tbody = document.querySelector('#contributions tbody');
+      
+      // VIDER LE TABLEAU AVANT D'AJOUTER LES NOUVELLES LIGNES
+      tbody.innerHTML = '';
+      
       let total = 0;
       let rowNumber = 1;
 
@@ -470,10 +474,10 @@
       const reste = Math.max(objectif - total, 0);
       document.getElementById('reste').textContent = reste.toLocaleString() + ' FCFA';
 
-      const pourcentage = Math.round((total / objectif) * 100);
+      const pourcentage = Math.min((total / objectif) * 100, 100);
       const bar = document.getElementById('progress-bar');
       bar.style.width = pourcentage + '%';
-      bar.textContent = pourcentage + '%';
+      bar.textContent = Math.round(pourcentage) + '%';
       
       if (pourcentage < 50) {
         bar.style.background = 'linear-gradient(90deg, #FF4500, #FF6347)';
